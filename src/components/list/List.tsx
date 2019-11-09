@@ -16,7 +16,7 @@ const List:React.FC<ListProps> = ({items, toggle, removeItem}) => {
                     <span>
                         {item.name}
                     </span>
-                <button onClick={() => removeItem(item)}>X</button>
+                <button onClick={(e) => {e.stopPropagation();removeItem(item)}}>X</button>
             </li>
         ))}
     </ul>)

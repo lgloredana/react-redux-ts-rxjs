@@ -2,6 +2,7 @@ import API from 'goals-todos-api';
 import {Action} from "redux";
 import {TodoState} from "./reducers";
 import {ItemTodoGoal} from "../../../components/list/ItemTodoGoal";
+import {AddTodoAction} from "./addTodo";
 
 export abstract class DeleteTodoAction implements Action<string> {
     static readonly _TYPE = "DeleteTodo";
@@ -14,11 +15,13 @@ export abstract class DeleteTodoAction implements Action<string> {
 
     static handle(todo:ItemTodoGoal){
         return (dispatch) => {
+            console.log('-----DeleteTodoAction-------');
             dispatch(DeleteTodoAction.dispatch(todo.id));
             return API.deleteTodo(todo.id)
                 .catch(() => {
+                    console.log('-----DeleteTodoAction-------');
                     alert('Error on deleting. Try again!');
-                    dispatch(DeleteTodoAction.dispatch(todo.id));
+                    dispatch(AddTodoAction.dispatch(todo));
                 });
         }
     }
