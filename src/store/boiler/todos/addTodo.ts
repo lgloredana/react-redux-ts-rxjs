@@ -8,7 +8,7 @@ export abstract class AddTodoAction implements Action<string> {
 
     static _reduce(state: TodoState, action: AddTodoAction): TodoState {
         return {
-            todos: [...state.todos, action.payload]
+            values: [...state.values, action.payload]
         }
     }
 
@@ -16,10 +16,12 @@ export abstract class AddTodoAction implements Action<string> {
         return (dispatch) => {
             API.saveTodo(todoName)
                 .then((todo:ItemTodoGoal) => {
+                    console.log('-----AddTodoAction-------');
                     dispatch(AddTodoAction.dispatch(todo));
                     cb();
                 })
                 .catch(() => {
+                    console.log('----err-AddTodoAction-------');
                     alert("There was an error on adding a todo. Try again!");
                 })
         };

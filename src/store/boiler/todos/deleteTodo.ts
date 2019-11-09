@@ -8,7 +8,7 @@ export abstract class DeleteTodoAction implements Action<string> {
 
     static _reduce(state: TodoState, action: DeleteTodoAction): TodoState {
         return {
-            todos: state.todos.filter( todo => (todo.id !== action.payload))
+            values: state.values.filter( todo => (todo.id !== action.payload))
         }
     }
 

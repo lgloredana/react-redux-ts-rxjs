@@ -7,7 +7,7 @@ export abstract class ToggleTodoAction implements Action<string> {
 
     static _reduce(state: TodoState, action: ToggleTodoAction): TodoState {
         return {
-            todos: state.todos.filter( todo => (todo.id !== action.payload))
+            values: state.values.filter( todo => (todo.id !== action.payload))
         }
     }
 

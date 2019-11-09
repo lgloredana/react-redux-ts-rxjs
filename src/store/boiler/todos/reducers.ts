@@ -4,14 +4,14 @@ import {DeleteTodoAction} from "./deleteTodo";
 import {ToggleTodoAction} from "./toggleTodo";
 
 export interface TodoState{
-    todos:Array<ItemTodoGoal>
+    values:Array<ItemTodoGoal>
 }
 
 /**
  * Initial chat state
  */
 const initialState: TodoState = {
-    todos: []
+    values: []
 };
 
 /**
