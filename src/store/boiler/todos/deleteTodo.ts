@@ -15,11 +15,9 @@ export abstract class DeleteTodoAction implements Action<string> {
 
     static handle(todo:ItemTodoGoal){
         return (dispatch) => {
-            console.log('-----DeleteTodoAction-------');
             dispatch(DeleteTodoAction.dispatch(todo.id));
             return API.deleteTodo(todo.id)
                 .catch(() => {
-                    console.log('-----DeleteTodoAction-------');
                     alert('Error on deleting. Try again!');
                     dispatch(AddTodoAction.dispatch(todo));
                 });

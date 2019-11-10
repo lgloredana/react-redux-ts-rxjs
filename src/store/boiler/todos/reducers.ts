@@ -8,20 +8,20 @@ export interface TodoState{
 }
 
 /**
- * Initial chat state
+ * Initial todo state
  */
 const initialState: TodoState = {
     values: []
 };
 
 /**
-* Union of chat actions
+* Union of todo actions
 */
 type TodoActionTypes = AddTodoAction | DeleteTodoAction | ToggleTodoAction;
 
 
 /**
- * Reducer for all chat actions
+ * Reducer for all todo actions
  * @param state
  * @param action
  */

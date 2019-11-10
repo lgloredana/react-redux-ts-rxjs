@@ -21,7 +21,6 @@ export abstract class ToggleTodoAction implements Action<string> {
 
     static handle(id:number){
         return (dispatch) => {
-            console.log('-----ToggleTodoAction-------');
             dispatch(ToggleTodoAction.dispatch(id));
             return API.saveTodoToggle(id)
                 .catch(() => {

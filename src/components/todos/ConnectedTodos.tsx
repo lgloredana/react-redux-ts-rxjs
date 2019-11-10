@@ -18,7 +18,7 @@ class ConnectedTodos extends React.Component<TodosProps>{
 
     addTodoItem = () => {
         let valueInput = this.inputTodo.current || {value: ''};
-        this.props.addTodo(valueInput.value, () => {valueInput.value = 'test';});
+        this.props.addTodo(valueInput.value, () => {valueInput.value = 'todo';});
     };
     removeTodo = (todo) => {
         this.props.removeTodo(todo);
@@ -33,7 +33,7 @@ class ConnectedTodos extends React.Component<TodosProps>{
             <input
                 type="text"
                 placeholder="Add Todo"
-                defaultValue="test"
+                defaultValue="todo"
                 ref={this.inputTodo}
             />
             <button onClick={this.addTodoItem}>Add Todo</button>
