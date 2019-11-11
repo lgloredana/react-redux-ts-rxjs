@@ -17,8 +17,9 @@ class ConnectedGoals extends React.Component<GoalsProps> {
         let valueInput = this.inputGoal.current || {value: ''};
         this.props.addGoal(valueInput.value, () => {valueInput.value = 'goal';});
     };
-    removeGoal = () => ({});
-
+    removeGoal = (todo) => {
+        this.props.removeGoal(todo);
+    };
     render (){
         return (<div>
             <h1>Goals List</h1>

@@ -14,7 +14,8 @@
     "typesafe-actions": "^5.1.0"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
+    "watch-less": "react-less-watcher -d src",
+    "start": "react-scripts-ts start&npm run watch-less",
     "start-old": "react-scripts start",
     "build": "react-scripts-ts build",
     "build-old": "react-scripts build",
@@ -39,12 +40,16 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^6.6.0",
     "@types/jest": "^24.0.22",
     "@types/node": "^12.12.6",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
     "@types/react-redux": "^7.1.5",
+    "eslint": "^6.6.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "less-watch-compiler": "^1.14.1",
+    "react-less-watcher": "^1.1.4",
     "typescript": "^3.7.2"
   }
 }
