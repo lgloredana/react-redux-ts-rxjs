@@ -7,6 +7,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-redux": "^7.1.3",
+    "react-router-redux": "^4.0.8",
     "react-scripts-ts": "^3.1.0",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
@@ -15,7 +16,8 @@
   },
   "scripts": {
     "watch-less": "react-less-watcher -d src",
-    "start": "react-scripts-ts start&npm run watch-less",
+    "watch-less-compiler": "less-watch-compiler src src",
+    "start": "react-scripts-ts start",
     "start-old": "react-scripts start",
     "build": "react-scripts-ts build",
     "build-old": "react-scripts build",
