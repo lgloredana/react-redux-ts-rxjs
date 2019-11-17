@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
 import * as serviceWorker from './serviceWorker';
 import './index.css';
-import configureStore from "./store/configureStore";
 import App from "./components/App";
-
-const store = configureStore();
+import configureStore from "./store/configureStore";
 
 const Root = () => (
-    <Provider store={store}>
+    <Provider store={configureStore}>
         <App />
     </Provider>
 );

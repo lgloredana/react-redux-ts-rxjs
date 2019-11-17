@@ -1,27 +1,16 @@
 import React from 'react';
-import {connect} from "react-redux";
 import './App.css';
-import ConnectedTodos from "./todos/ConnectedTodos";
-import ConnectedGoals from "./goals/ConnectedGoals";
+import GoalsView from "./goals/GoalsView";
+import TodosView from "./todos/TodosView";
 
 
-type AppProps = {
-    loading: number
-}
-
-class App extends React.Component<AppProps> {
-  render () {
+const App: React.FunctionComponent<{}> = () => {
       return (
-          this.props.loading
-              ? <h1>Loading</h1>
-              : <div>
-                  <ConnectedTodos />
-                  <ConnectedGoals />
-              </div>
+          <div>
+                  <TodosView />
+                  <GoalsView />
+          </div>
       );
-  }
 }
-const mapStateToProps = (state) => ({loading: state.loading});
-const mapDispatchToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App

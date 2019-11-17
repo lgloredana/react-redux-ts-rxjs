@@ -2,22 +2,33 @@ import * as React from "react";
 import {connect} from "react-redux";
 import List from "../list/List";
 import {ItemTodoGoal} from "../list/ItemTodoGoal";
-import {RemoveGoalAction} from "../../store/boiler/goals/removeGoal";
-import {AddGoalAction} from "../../store/boiler/goals/addGoal";
+import * as goalsActions from "../../store/goals/actions"
+import * as selectors from "../../store/goals/selectors"
+import { RootState } from 'typesafe-actions'
 
 type GoalsProps = {
     goals: Array<ItemTodoGoal>;
-    addGoal: typeof AddGoalAction.handle;
-    removeGoal: typeof RemoveGoalAction.handle;
+    addGoal: typeof goalsActions.addGoal.request;
+    removeGoal: typeof goalsActions.removeGoal.request;
+}
+type State = {
 }
 
-class ConnectedGoals extends React.Component<GoalsProps> {
+const mapStateToProps = (state:RootState) => ({
+    goals: selectors.goals(state)
+});
+const mapDispatchToProps = () => ({
+    addGoal: goalsActions.addGoal.request,
+    removeGoal: goalsActions.removeGoal.request,
+});
+
+class GoalsView extends React.Component<GoalsProps, State> {
     private inputGoal = React.createRef<HTMLInputElement>();
     addGoalItem = () => {
         let valueInput = this.inputGoal.current || {value: ''};
-        this.props.addGoal(valueInput.value, () => {valueInput.value = 'goal';});
+        this.props.addGoal(valueInput.value);
     };
-    removeGoal = (todo) => {
+    removeGoal = (todo:ItemTodoGoal) => {
         this.props.removeGoal(todo);
     };
     render (){
@@ -35,9 +46,7 @@ class ConnectedGoals extends React.Component<GoalsProps> {
     }
 };
 
-const mapStateToProps = (state) => ({goals: state.goals.values});
-const mapDispatchToProps = (dispatch) => ({
-    addGoal: (goalName, cb) => dispatch(AddGoalAction.handle(goalName, cb)),
-    removeGoal: (goal) => dispatch(RemoveGoalAction.handle(goal)),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(ConnectedGoals);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps)(GoalsView);

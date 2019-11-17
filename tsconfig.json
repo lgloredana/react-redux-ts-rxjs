@@ -15,7 +15,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": true,
     "jsx": "react",
 //those bellow where added from https://codesandbox.io/s/w02m7jm3q7
@@ -30,7 +30,7 @@
     "noUnusedLocals": true
   },
   "include": [
-    "src"
+    "src", "typings"
   ],
   "exclude": [
     "node_modules",

@@ -3,7 +3,7 @@ import {ItemTodoGoal} from "./ItemTodoGoal";
 
 type ListProps = {
     items: Array<ItemTodoGoal>,
-    toggle: (todoId:number) => void,
+    toggle: (todoId:string) => void,
     removeItem: (item:ItemTodoGoal) => void
 }
 

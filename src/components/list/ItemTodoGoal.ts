@@ -1,5 +1,5 @@
 export interface ItemTodoGoal {
-    id:number,
+    id:string,
     complete:boolean,
     name:string,
 }
