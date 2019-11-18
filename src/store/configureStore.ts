@@ -8,20 +8,21 @@ import rootReducer from "./root-reducer";
 const initialState = {todos:{values:[]}, goals:{values:[]}};
 
 /** root middleware **/
-// const composeEnhancers = composeWithDevTools({
-//      name: 'POC RXJS-React-Redux-TypeScript ====Store====',
-// });
-// const rootMiddleware = composeEnhancers(applyMiddleware(
-//     epicMiddleware));
+const composeEnhancers = composeWithDevTools({
+     name: 'POC RXJS-React-Redux-TypeScript ====Store====',
+});
+const rootMiddleware = composeEnhancers(applyMiddleware(
+    epicMiddleware));
 
-/** run epics alongside the normal Redux dispatch channel **/
-epicMiddleware.run(rootEpics);
+
 
 /** configure Store **/
 const configureStore =  createStore(
-    rootReducer,
+    rootReducer(),
     initialState,
-    composeWithDevTools(applyMiddleware(epicMiddleware))
+    // composeWithDevTools(applyMiddleware(epicMiddleware))
+    rootMiddleware
 );
-
+/** run epics alongside the normal Redux dispatch channel **/
+epicMiddleware.run(rootEpics);
 export default configureStore;

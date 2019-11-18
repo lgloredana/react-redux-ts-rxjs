@@ -50,4 +50,7 @@ class TodosView extends React.Component<TodosProps>{
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodosView);
+export default connect(
+    mapStateToProps,
+ mapDispatchToProps
+)(TodosView);
