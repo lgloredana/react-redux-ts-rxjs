@@ -2,14 +2,14 @@ import {createAsyncAction} from "typesafe-actions";
 import {ItemTodoGoal} from "../../components/list/ItemTodoGoal";
 
 export const addTodo = createAsyncAction(
-    'addTodoRequest',
-    'addTodoSuccess',
-    'addTodoError')<string, ItemTodoGoal,Error>();
+    'ADD_TODO/REQUEST',
+    'ADD_TODO/SUCCESS',
+    'ADD_TODO/ERROR')<string, ItemTodoGoal,Error>();
 export const removeTodo = createAsyncAction(
-    'removeTodoRequest',
-    'removeTodoSuccess',
-    'removeTodoError')<ItemTodoGoal, any, Error>();
+    'REMOVE_TODO/REQUEST',
+    'REMOVE_TODO/SUCCESS',
+    'REMOVE_TODO/ERROR')<ItemTodoGoal, any, Error>();
 export const toggleTodo = createAsyncAction(
-    'toggleTodoRequest',
-    'toggleTodoSuccess',
-    'toggleTodoError')<string, any, Error>();
+    'TOGGLE_TODO/REQUEST',
+    'TOGGLE_TODO/SUCCESS',
+    'TOGGLE_TODO/ERROR')<string, any, Error>();
