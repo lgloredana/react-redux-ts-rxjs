@@ -15,8 +15,13 @@ export const addTodoEpic:Epic<
         switchMap(action => {
                 return from(api.goalsTodos.addTodoApi((action.payload)))
                     .pipe(
-                        map(addTodo.success),
-                        catchError(err => of(addTodo.failure(new Error(err))))
+                        map((response) => {
+                                return addTodo.success(response)
+                            }),
+                        catchError(err => {
+                                alert("There was an error on adding a todo. Try again!");
+                                return of(addTodo.failure(new Error(err)))//todo: do we need it?
+                        })
                     )
             }
         )
@@ -30,12 +35,13 @@ export const removeTodoEpic:Epic<
     Services
     > = (action$, state$, {api}) =>  action$.pipe(
     filter(isActionOf(removeTodo.request)),
-    switchMap(action =>
-            from(api.goalsTodos.deleteTodoApi((action.payload.id)))
+    switchMap(action =>{
+
+            return from(api.goalsTodos.deleteTodoApi((action.payload.id)))
                 .pipe(
                     map(removeTodo.success),
                     catchError(err => of(removeTodo.failure(new Error(err))))
-                )
+                )}
         )
 );
 
@@ -47,7 +53,7 @@ export const toggleTodoEpic:Epic<
     > = (action$, state$, {api}) =>  action$.pipe(
     filter(isActionOf(toggleTodo.request)),
     switchMap(action =>
-            from(api.goalsTodos.toggleToodoApi((action.payload)))
+            from(api.goalsTodos.toggleTodoApi((action.payload)))
                 .pipe(
                     map(toggleTodo.success),
                     catchError(err => of(toggleTodo.failure(new Error(err))))
