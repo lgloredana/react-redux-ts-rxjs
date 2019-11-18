@@ -15,10 +15,10 @@ type TodosProps = {
 const mapStateToProps = (state:RootState) => ({
     todos: selectors.todos(state)
 });
-const mapDispatchToProps = () => ({
-    addTodo: todoActions.addTodo.request,
-    removeTodo: todoActions.removeTodo.request,
-    toggleTodo: todoActions.toggleTodo.request
+const mapDispatchToProps = (dispatch) => ({
+    addTodo: (todoName:string) => { return dispatch(todoActions.addTodo.request(todoName)) },
+    removeTodo: (todoItem:ItemTodoGoal) => { return dispatch(todoActions.removeTodo.request(todoItem))},
+    toggleTodo: (id:string) => {return dispatch(todoActions.toggleTodo.request(id))}
 });
 
 class TodosView extends React.Component<TodosProps>{
