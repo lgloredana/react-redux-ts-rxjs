@@ -23,10 +23,11 @@ const mapDispatchToProps = (dispatch) => ({
 
 class TodosView extends React.Component<TodosProps>{
     private inputTodo =  React.createRef<HTMLInputElement>();
-
+    private nr = 1;
     addTodoItem = () => {
         let valueInput = this.inputTodo.current || {value: ''};
         this.props.addTodo(valueInput.value);
+        valueInput.value = 'todo' + (this.nr++);
     };
     removeTodo = (todo:ItemTodoGoal) => {
         this.props.removeTodo(todo);
