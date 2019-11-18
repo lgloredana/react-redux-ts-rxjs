@@ -1,4 +1,4 @@
-import {catchError, filter, map, switchMap, tap} from "rxjs/operators";
+import {catchError, filter, map, switchMap} from "rxjs/operators";
 import {isActionOf, RootAction, RootState, Services} from "typesafe-actions";
 import {from, of} from "rxjs";
 import {addTodo, removeTodo, toggleTodo} from "./actions";
@@ -10,11 +10,9 @@ export const addTodoEpic:Epic<
     RootState,
     Services
     > = (action$, state$, {api}) => {
-    console.log('--------epic start-----------', action$);
+    console.log('--------epic start-----------');
     return action$.pipe(
-        tap((k) => console.log('pipe1', k)),
         filter(isActionOf(addTodo.request)),
-        tap((k) => console.log('pipe1', k)),
         switchMap(action => {
                 console.log('--------epic-----------');
 

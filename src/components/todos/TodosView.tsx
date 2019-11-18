@@ -36,6 +36,7 @@ class TodosView extends React.Component<TodosProps>{
     };
 
     render(){
+        console.log('---render todos view -----', this.props.todos);
         return ( <div>
             <h1>Todo List</h1>
             <input

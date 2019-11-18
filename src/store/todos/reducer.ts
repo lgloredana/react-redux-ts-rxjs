@@ -11,7 +11,7 @@ const todoReducer = combineReducers({
             [todoActions.addTodo.success, todoActions.addTodo.failure, todoActions.removeTodo.success, todoActions.removeTodo.failure],
             (state, action) => false
         ),
-    values: createReducer([{id:"1", name:'todo1', complete:false}])
+    values: createReducer([{id:"1", name:'todotest', complete:false}])
         .handleAction([todoActions.addTodo.success],
             (state, action) => {
                 return [...state, action.payload]
