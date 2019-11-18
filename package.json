@@ -53,7 +53,6 @@
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "less-watch-compiler": "^1.14.1",
-    "react-less-watcher": "^1.1.4",
     "typescript": "^3.7.2"
   }
 }
