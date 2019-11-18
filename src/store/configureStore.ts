@@ -14,13 +14,10 @@ const composeEnhancers = composeWithDevTools({
 const rootMiddleware = composeEnhancers(applyMiddleware(
     epicMiddleware));
 
-
-
 /** configure Store **/
 const configureStore =  createStore(
     rootReducer(),
     initialState,
-    // composeWithDevTools(applyMiddleware(epicMiddleware))
     rootMiddleware
 );
 /** run epics alongside the normal Redux dispatch channel **/
