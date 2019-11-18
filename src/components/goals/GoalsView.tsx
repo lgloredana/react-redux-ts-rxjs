@@ -17,9 +17,9 @@ type State = {
 const mapStateToProps = (state:RootState) => ({
     goals: selectors.goals(state)
 });
-const mapDispatchToProps = () => ({
-    addGoal: goalsActions.addGoal.request,
-    removeGoal: goalsActions.removeGoal.request,
+const mapDispatchToProps = (dispatch) => ({
+    addGoal: (goalName:string) => dispatch(goalsActions.addGoal.request(goalName)),
+    removeGoal: (goalItem:ItemTodoGoal) => dispatch(goalsActions.removeGoal.request(goalItem)),
 });
 
 class GoalsView extends React.Component<GoalsProps, State> {
