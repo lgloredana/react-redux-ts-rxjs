@@ -10,12 +10,9 @@ export const addTodoEpic:Epic<
     RootState,
     Services
     > = (action$, state$, {api}) => {
-    console.log('--------epic start-----------');
     return action$.pipe(
         filter(isActionOf(addTodo.request)),
         switchMap(action => {
-                console.log('--------epic-----------');
-
                 return from(api.goalsTodos.addTodoApi((action.payload)))
                     .pipe(
                         map(addTodo.success),
@@ -23,8 +20,7 @@ export const addTodoEpic:Epic<
                     )
             }
         )
-    );
-    }
+    )}
 
 
 export const removeTodoEpic:Epic<
